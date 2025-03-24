@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('bck.png') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            animation: fadeInPage 1.5s ease-in-out forwards;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0px 10px 40px rgba(74, 144, 226, 0.8); /* Efek glow biru */
+            animation: fadeIn 1.5s ease-in-out, floating 3s infinite ease-in-out;
+            width: 800px;
+            max-height: 80%;
+            overflow-y: auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0px 0px 15px rgba(74, 144, 226, 0.9); /* Glow biru */
+            animation: slideIn 1s ease-in-out;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 90%;
+            text-align: justify;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #typing-text {
+            white-space: pre-line;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 18px 45px;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(45deg, #007bff, #00d9ff); /* Warna tombol biru neon */
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0px 5px 15px rgba(0, 217, 255, 0.6);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .btn.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #0056b3, #00aaff);
+            transform: translateY(-3px);
+            box-shadow: 0px 10px 20px rgba(0, 170, 255, 0.8);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat Ulang Tahun Sayang! 🎉</h1>
+        <p id="typing-text"></p>
+        <br>
+        <button id="hadiahBtn" class="btn" onclick="window.location.href='hadiah.html'">Nih untuk kamu! 🎁</button>
+    </div>
+
+    <script>
+        const text = `Barakallah fi umrik, sayangku. Semoga Allah senantiasa melimpahkan rahmat-Nya, 
+        memberikan keberkahan, dan menjadikan setiap langkahmu penuh dengan kebahagiaan. 
+
+        Di hari yang spesial ini, aku ingin mengucapkan terima kasih karena telah menjadi bagian dari hidupku. 
+        Kamu adalah anugerah yang sangat berarti, dan aku berdoa agar Allah selalu menjaga dan menyertai setiap perjalananmu, 
+        baik dalam suka maupun duka.
+
+        Semoga tahun ini, Allah memberikan segala yang terbaik untukmu, mewujudkan semua impian, 
+        serta memberimu cinta dan kedamaian yang abadi.
+
+        Aku berjanji akan selalu berada di sisimu, mendukung dan mencintaimu dengan sepenuh hati. 
+        Selamat ulang tahun, semoga semua doa yang kamu panjatkan dikabulkan, 
+        dan hidupmu selalu penuh dengan kebahagiaan dan keberkahan. 
+
+        I love you Neila Putri Nur Aini🫂`;
+
+
+        let index = 0;
+
+        function typeWriter() {
+            if (index < text.length) {
+                document.getElementById("typing-text").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 50);
+            } else {
+                const hadiahBtn = document.getElementById("hadiahBtn");
+                hadiahBtn.classList.add("show");
+            }
+        }
+
+        window.onload = typeWriter;
+    </script>
+</body>
+</html>
